@@ -1,102 +1,179 @@
-DB-GROUP1 – Cloud-Based Django Web Application
-Project Overview
+# SQL Quizlet - Django Web Application
 
-This project demonstrates the setup of a cloud-based system on Google Cloud Platform (GCP).
-It includes:
+**Live App:** https://db-group1-01.uw.r.appspot.com  
+**GitHub Repository:** https://github.com/seecbb007/sqlQuizletgroup1  
+**GCP Project ID:** `db-group1-01`
 
-A Cloud SQL (MySQL) instance as the database server
+A cloud-based SQL learning platform built with Django and deployed on Google Cloud Platform.
 
-A Django web application deployed on Google App Engine (Standard Environment)
+## Quick Start Guide
 
-1. Prerequisites
+### Prerequisites
+- **Python 3.11 or higher** 
+- **Git** 
+- **Command Line/Terminal** access
 
-Before running or modifying this project, make sure you have:
+### Step 1: Clone the Repository
 
-🐍 Python 3.11+
+Open your terminal/command prompt and run:
 
-☁️ Google Cloud SDK (gcloud)
+```bash
+# Clone the repository
+git clone https://github.com/seecbb007/sqlQuizletgroup1.git
 
-💾 Virtualenv (Python venv)
+# Navigate to the project directory
+cd sqlQuizletgroup1
+```
 
-🔑 Access to the GCP project: db-group1-01
+### Step 2: Set Up Python Virtual Environment
 
-🧠 Optional: Cloud SQL connection info (if database integration is needed later)
+```bash
+# Create a virtual environment
+python3 -m venv venv
 
-2. Clone the Project
-git clone https://github.com/your-repo/db-group1.git
-cd db-group1
+# Activate the virtual environment
+# On Windows:
+venv\Scripts\activate
+# On macOS/Linux:
+source venv/bin/activate
+```
 
-3. Set Up the Virtual Environment
-python3 -m venv .venv
-source .venv/bin/activate
+### Step 3: Install Dependencies
 
-
-Then install the dependencies:
-
+```bash
+# Install required packages
 pip install -r requirements.txt
+```
 
-4. Project Structure
+### Step 4: Run Database Migrations
+
+```bash
+# Apply database migrations
+python manage.py migrate
+```
+
+### Step 5: Start the Development Server
+
+```bash
+# Start the Django development server
+python manage.py runserver
+```
+
+### Step 6: Access the Application
+
+Open your web browser and go to: **http://127.0.0.1:8000/**
+
+You should see the SQL Quizlet application running locally!
+
+---
+
+## 📁 Project Structure
+
+```
 sql_quizlet/
-│
-├── mysite/                 # Main Django project
-│   ├── settings.py         # Project configuration
-│   ├── urls.py             # URL routing
-│   └── wsgi.py             # WSGI entry point for Gunicorn
-│
-├── app.yaml                # Google App Engine configuration
-├── requirements.txt        # Python dependencies
-├── manage.py               # Django management commands
-└── README.md               # This guide
+├── mysite/                 # Django project settings
+│   ├── __init__.py
+│   ├── settings.py         # Django configuration
+│   ├── urls.py            # URL routing
+│   └── wsgi.py            # WSGI configuration
+├── staticfiles/           # Static files (CSS, JS, images)
+├── app.yaml               # Google App Engine configuration
+├── requirements.txt       # Python dependencies
+├── manage.py              # Django management script
+├── db.sqlite3            # SQLite database (local development)
+└── README.md             # This file
+```
 
-5. Running Locally
+---
 
-You can test the app locally using Django’s development server:
+## 🛠️ Development Commands
 
+### Basic Django Commands
+
+```bash
+# Start development server
 python manage.py runserver
 
+# Create database migrations
+python manage.py makemigrations
 
-Visit http://127.0.0.1:8000/
- to verify that it’s running.
+# Apply database migrations
+python manage.py migrate
 
-6. Collect Static Files
+# Create a superuser (admin account)
+python manage.py createsuperuser
 
-Before deployment, make sure to collect all static files:
-
+# Collect static files (for deployment)
 python manage.py collectstatic --noinput
+```
 
-7. Deploy to Google App Engine
+### Virtual Environment Commands
 
-Authenticate your account and select the project:
+```bash
+# Activate virtual environment
+# Windows:
+venv\Scripts\activate
+# macOS/Linux:
+source venv/bin/activate
 
+# Deactivate virtual environment
+deactivate
+```
+
+---
+
+## 🌐 Deployment to Google App Engine
+
+### Prerequisites for Deployment
+- Google Cloud SDK installed ([Download here](https://cloud.google.com/sdk/docs/install))
+- Access to the GCP project `db-group1-01`
+
+### Deploy Commands
+
+```bash
+# Authenticate with Google Cloud
 gcloud auth login
+
+# Set the project
 gcloud config set project db-group1-01
 
+# Collect static files
+python manage.py collectstatic --noinput
 
-Then deploy:
-
+# Deploy to App Engine
 gcloud app deploy
 
+# Open the deployed app
+gcloud app browse
+```
 
-Once deployment finishes, the web app will be available at:
-🔗 https://db-group1-01.uw.r.appspot.com
+---
 
-8. Connecting to Cloud SQL (Optional)
+## 📋 Requirements
 
-If you plan to connect Django to your Cloud SQL (MySQL) instance:
+The project uses the following main dependencies:
 
-Update DATABASES in mysite/settings.py with the Cloud SQL connection name and credentials.
+- **Django 4.2.25** - Web framework
+- **Gunicorn 23.0.0** - WSGI server for production
+- **WhiteNoise 6.11.0** - Static file serving
 
-Install mysqlclient or pymysql as an additional dependency:
-
-pip install mysqlclient
+See `requirements.txt` for the complete list.
 
 
-Redeploy after updating settings.
+---
 
-9. Common Commands
-Command	Description
-python manage.py runserver	Run app locally
-python manage.py migrate	Apply database migrations
-python manage.py createsuperuser	Create admin account
-gcloud app deploy	Deploy app to App Engine
-gcloud app browse	Open app in browser
+## 🔄 Next Steps
+
+This project is currently in **Phase III** of development:
+- ✅ Django web application setup
+- ✅ Google App Engine deployment
+- 🔄 Cloud SQL integration (coming next)
+- 🔄 Advanced SQL quiz features
+
+---
+
+
+
+
+
+
