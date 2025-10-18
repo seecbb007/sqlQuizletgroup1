@@ -1,0 +1,7 @@
+runtime: python311
+env: standard
+entrypoint: gunicorn -b :$PORT mysite.wsgi
+
+handlers:
+  - url: /static
+    static_dir: staticfiles
