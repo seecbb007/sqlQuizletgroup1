@@ -1,0 +1,28 @@
+# --- Virtual Environments ---
+venv/
+.venv/
+
+# --- Python cache ---
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# --- SQLite DB ---
+db.sqlite3
+
+# --- Environment Variables ---
+.env
+
+# --- Static / Media files ---
+/staticfiles/
+/media/
+
+# --- VSCode config ---
+.vscode/
+
+# --- Logs ---
+*.log
+
+# --- Deployment ---
+*.pyc
